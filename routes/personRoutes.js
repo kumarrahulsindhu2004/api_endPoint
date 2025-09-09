@@ -82,4 +82,6 @@ route.delete('/:id', async (req, res) => {
   }
 });
 
+// comment added for testing purpose
+
 export default route;
