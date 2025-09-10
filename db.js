@@ -1,15 +1,19 @@
 import mongoose from "mongoose";
-const mongourl = 'mongodb://localhost:27017/hotels'
-export   async function connectDB() {
-    try {
-        await mongoose.connect(mongourl, {
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const mongoUrl = process.env.MongoUrl || process.env.MongoLocalUrl;
+
+export async function connectDB() {
+  try {
+    console.log("Mongo URL from env:", mongoUrl); // ✅ correct name
+    await mongoose.connect(mongoUrl, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
-        console.log("MongoDB connected");
-        
-    } catch (error) {
-        console.log("Error found", error);
-        
-    }
+    console.log("✅ MongoDB connected");
+  } catch (error) {
+    console.error("❌ Error found:", error.message);
+  }
 }
