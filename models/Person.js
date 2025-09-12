@@ -1,4 +1,5 @@
 import mongoose, { model } from "mongoose";
+import passport from "passport";
 // define the Person
 const personSchema = new mongoose.Schema({
     name:{
@@ -10,7 +11,15 @@ const personSchema = new mongoose.Schema({
     mobile:{type:String,require:true},
     email:{type:String,require:true,unique:true},
     address:{type:String,require:true},
-    salary:{type:Number,require:true}
+    salary:{type:Number,require:true},
+    username:{
+        require:true,
+        type:String
+    },
+    passport:{
+        require:true,
+        type:String
+    }
 })
 
 // Create Person Model
