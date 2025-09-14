@@ -29,17 +29,16 @@ app.use(logRequest)
 // implement auth
 passport.use(new LocalStrategy (async (username,password,done)=>{
   try {
-    console.log('Received credentials: ',username,passport);
+    console.log('Received credentials: ',username,password);
     const user = await Person.findOne({username:username})
     if(!user)
       return done(null, false,{message:'Incorrent username'})
     
-    const isPasswordMatch = user.passport === passport ? true : false;
-    if(!isPasswordMatch){
-      return done(null,user)
-    }else{
-      return done(null,false,{message:'Incorrect password'})
-    }
+    const isPasswordMatch = user.password === password? true:false;
+     if (!isPasswordMatch) {
+        return done(null, false, { message: "Incorrect password" });
+      } 
+      return done(null, user);
   } catch (error) {
     // console.log(error);
     return done(error)
@@ -47,10 +46,16 @@ passport.use(new LocalStrategy (async (username,password,done)=>{
 }))
 //app routres 
 app.use(passport.initialize())
-const localAuthMiddleware = passport.authenticate('local',{session:false})
-app.get("/",localAuthMiddleware, (req, res) => {
-  res.send("Welcome on the server");
-});
+
+
+
+app.post("/", 
+  passport.authenticate("local", { session: false }), 
+  (req, res) => {
+    res.send("Welcome on the server");
+  }
+);
+
 app.use('/person',personRoute);
 app.use('/menu',menuRoute);
   
