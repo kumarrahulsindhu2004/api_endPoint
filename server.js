@@ -34,7 +34,7 @@ app.use(logRequest);
 
 
 app.use(cors({
-  origin: ["http://localhost:5173", "api-restaurant-managemnt.netlify.app"], 
+  origin: ["http://localhost:5173", "api-restaurant-managemnt.netlify.app","https://your-frontend.onrender.com"], 
   methods: "GET,POST,PUT,DELETE",
   credentials: true
 }));
