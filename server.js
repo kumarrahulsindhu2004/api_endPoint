@@ -39,7 +39,7 @@ app.use(cors({
            "https://api-endpoint-imzw.onrender.com",
            "https://your-frontend.onrender.com"
           ], 
-  methods: "GET,POST,PUT,DELETE",
+  methods: ["GET,POST,PUT,DELETE"],
   credentials: true
 }));
 
