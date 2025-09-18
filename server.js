@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 import { Person } from "./models/Person.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import cors from "cors";
 
 dotenv.config();
 
@@ -30,6 +31,14 @@ connectDB();
 // executive middleware
 app.use(express.json());
 app.use(logRequest);
+
+
+app.use(cors({
+  origin: ["http://localhost:5173", "https://your-frontend-domain.com"], 
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true
+}));
+
 
 // implement passport-local for login
 passport.use(
