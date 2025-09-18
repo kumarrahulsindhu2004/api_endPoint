@@ -81,23 +81,23 @@ route.put('/id/:id',async(req,res)=>{
 })
 
 
-// route.delete('/:id', async (req, res) => {
-//   try {
-//     const personId = req.params.id;
-//     const response = await Person.findByIdAndDelete(personId);
+route.delete('/:id', async (req, res) => {
+  try {
+    const personId = req.params.id;
+    const response = await Person.findByIdAndDelete(personId);
 
-//     if (!response) {
-//       return res.status(404).json({ error: 'Person not found' });
-//     }
+    if (!response) {
+      return res.status(404).json({ error: 'Person not found' });
+    }
 
-//     console.log('Data deleted:', response);
-//     return res.status(200).json({ message: 'Person deleted successfully' });
+    console.log('Data deleted:', response);
+    return res.status(200).json({ message: 'Person deleted successfully' });
 
-//   } catch (error) {
-//     console.error(error);
-//     return res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 // comment added for testing purpose
 
