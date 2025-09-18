@@ -37,7 +37,7 @@ app.use(cors({
   origin: ["http://localhost:5173",
            "https://api-restaurant-managemnt.netlify.app",
            "https://api-endpoint-imzw.onrender.com",
-           "https://your-frontend.onrender.com"
+          //  "https://your-frontend.onrender.com"
           ], 
   methods: ["GET,POST,PUT,DELETE"],
   credentials: true
